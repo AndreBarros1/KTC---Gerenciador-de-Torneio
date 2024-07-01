@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/inscricao_jogador.css">
+    <link rel="icon" href="./assets/logo.png">
+    <title>KTC</title>
+</head>
+<body>
+    <header class="cabecalho">
+        <nav class="cabecalho-menu">
+            <a class="cabecalho-menu-item" href="index.html">Home</a>
+            <a class="cabecalho-menu-item" href="criacao_torneio.html">Criar Torneio</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="content">
+            <div class="container">
+                <div class="tittle">Inscrição</div>
+                <form action="criacao_torneio.html">
+                    <div class="user-details">
+                        <div class="input-box">
+                            <span class="details">Nome: </span>
+                            <input type="text" placeholder="Digite seu Nome" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Sobrenome: </span>
+                            <input type="text" placeholder="Digite seu Sobrenome" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Telefone: </span>
+                            <input type="text" placeholder="Digite seu Telefone" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">CPF: </span>
+                            <input type="text" placeholder="Digite seu CPF" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">País: </span>
+                            <input type="text" placeholder="Digite seu País" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Cidade</span>
+                            <input type="text" placeholder="Digite sua Cidade" required>
+                        </div>
+                    </div>
+
+                    <div class="termos">
+                        <input type="checkbox" required>
+                        <span class="termoseservicos">Concordar com os Termos e Condições</span>
+                    </div>
+
+                    <div class="button">
+                        <input type="submit" value="Registrar">
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,231 @@
+1. HTML da Página Principal (index.html)
+html
+Copiar código
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament Bracket</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Tournament Bracket</h1>
+    <div id="bracket">
+        <!-- Oitavas de Final -->
+        <div class="round" id="eighthfinals">
+            <h2>Oitavas de Final</h2>
+        </div>
+        <!-- Quartas de Final -->
+        <div class="round" id="quarterfinals">
+            <h2>Quartas de Final</h2>
+        </div>
+        <!-- Semifinais -->
+        <div class="round" id="semifinals">
+            <h2>Semifinais</h2>
+        </div>
+        <!-- Final -->
+        <div class="round" id="finals">
+            <h2>Final</h2>
+        </div>
+        <!-- Campeão -->
+        <div class="champion">
+            <h2>Campeão</h2>
+            <div id="champion"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+2. HTML do Formulário de Cadastro (register.html)
+html
+Copiar código
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Times</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Cadastro de Times</h1>
+    <form id="team-form">
+        <label for="team-name">Nome do Time:</label>
+        <input type="text" id="team-name" required>
+        <button type="submit">Cadastrar Time</button>
+    </form>
+    <script src="register.js"></script>
+</body>
+</html>
+3. CSS (styles.css)
+css
+Copiar código
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+#bracket {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.round {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.matchup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 4px;
+    width: 150px;
+    text-align: center;
+}
+
+button {
+    margin-top: 5px;
+    padding: 5px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.champion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 10px;
+}
+
+input, button {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+4. JavaScript da Página Principal (script.js)
+javascript
+Copiar código
+// Carrega equipes do localStorage
+const storedTeams = JSON.parse(localStorage.getItem('teams')) || [];
+
+const teams = storedTeams.length === 16 ? storedTeams : Array.from({ length: 16 }, (_, i) => `Team ${i + 1}`);
+
+let eighthfinalsWinners = [];
+let quarterfinalsWinners = [];
+let semifinalsWinners = [];
+let champion = "";
+
+// Função para criar a fase inicial (oitavas de final)
+function createInitialRound() {
+    const round = document.getElementById('eighthfinals');
+    teams.forEach((team, index) => {
+        if (index % 2 === 0) {
+            const matchup = document.createElement('div');
+            matchup.className = 'matchup';
+            matchup.innerHTML = `
+                <div>${team}</div>
+                <div>${teams[index + 1]}</div>
+                <button onclick="advanceTeam('eighthfinals', ${index / 2})">Avançar</button>
+            `;
+            round.appendChild(matchup);
+        }
+    });
+}
+
+// Função para avançar a equipe vencedora
+function advanceTeam(round, index) {
+    switch (round) {
+        case 'eighthfinals':
+            eighthfinalsWinners.push(teams[index * 2]);
+            if (eighthfinalsWinners.length === 8) {
+                createNextRound('quarterfinals', eighthfinalsWinners);
+            }
+            break;
+        case 'quarterfinals':
+            quarterfinalsWinners.push(eighthfinalsWinners[index * 2]);
+            if (quarterfinalsWinners.length === 4) {
+                createNextRound('semifinals', quarterfinalsWinners);
+            }
+            break;
+        case 'semifinals':
+            semifinalsWinners.push(quarterfinalsWinners[index * 2]);
+            if (semifinalsWinners.length === 2) {
+                createNextRound('finals', semifinalsWinners);
+            }
+            break;
+        case 'finals':
+            champion = semifinalsWinners[index * 2];
+            document.getElementById('champion').innerText = champion;
+            break;
+    }
+}
+
+// Função para criar a próxima fase
+function createNextRound(round, winners) {
+    const nextRound = document.getElementById(round);
+    winners.forEach((winner, index) => {
+        if (index % 2 === 0) {
+            const matchup = document.createElement('div');
+            matchup.className = 'matchup';
+            matchup.innerHTML = `
+                <div>${winner}</div>
+                <div>${winners[index + 1]}</div>
+                <button onclick="advanceTeam('${round}', ${index / 2})">Avançar</button>
+            `;
+            nextRound.appendChild(matchup);
+        }
+    });
+}
+
+// Inicializa o torneio
+createInitialRound();
+5. JavaScript do Formulário de Cadastro (register.js)
+javascript
+Copiar código
+document.getElementById('team-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const teamName = document.getElementById('team-name').value;
+
+    // Carrega equipes existentes do localStorage
+    let teams = JSON.parse(localStorage.getItem('teams')) || [];
+
+    if (teams.length < 16) {
+        teams.push(teamName);
+        localStorage.setItem('teams', JSON.stringify(teams));
+        alert('Time cadastrado com sucesso!');
+        document.getElementById('team-name').value = '';
+    } else {
+        alert('Número máximo de times cadastrados atingido.');
+    }
+});

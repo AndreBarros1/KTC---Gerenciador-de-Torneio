@@ -1,8 +1,8 @@
 // Inicializa as equipes
 const teams = [
-    "Team 1", "Team 2", "Team 3", "Team 4", "Team 5",
-    "Team 6", "Team 7", "Team 8", "Team 9", "Team 10",
-    "Team 11", "Team 12", "Team 13", "Team 14", "Team 15", "Team 16"
+    "Time 1", "Time 2", "Time 3", "Time 4", "Time 5",
+    "Time 6", "Time 7", "Time 8", "Time 9", "Time 10",
+    "Time 11", "Time 12", "Time 13", "Time 14", "Time 15", "Time 16"
 ];
 
 let eighthfinalsWinners = [];

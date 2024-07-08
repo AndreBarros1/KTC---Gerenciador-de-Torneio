@@ -5,25 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KTC</title>
     <link rel="stylesheet" href="./css/chaves.css">
+    <link rel="icon" href="./assets/logo.png">
 </head>
 <body>
-    <h1>Chaveamento do Torneio</h1>
+    <header class="cabecalho">
+        <nav class="cabecalho-menu">
+            <a class="cabecalho-menu-item" href="index.html">Home</a>
+            <a class="cabecalho-menu-item" href="inscricao_time.html">Inscrever Time</a>
+        </nav>
+    </header>
+
+    <h1>Chaveamento do torneio</h1>
+    <button id="advance-teams">Avançar Times</button>
     <div id="bracket">
         <!-- Oitavas de Final -->
         <div class="round" id="eighthfinals">
             <h2>Oitavas de Final</h2>
+            <div class="matchups"></div>
         </div>
         <!-- Quartas de Final -->
         <div class="round" id="quarterfinals">
             <h2>Quartas de Final</h2>
+            <div class="matchups"></div>
         </div>
         <!-- Semifinais -->
         <div class="round" id="semifinals">
             <h2>Semifinais</h2>
+            <div class="matchups"></div>
         </div>
         <!-- Final -->
         <div class="round" id="finals">
             <h2>Final</h2>
+            <div class="matchups"></div>
         </div>
         <!-- Campeão -->
         <div class="champion">

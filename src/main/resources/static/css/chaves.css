@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Montserrat";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    font-size: 100%;
+    background: linear-gradient(135deg, #56008f, #1d102e);
+    color: #FFF2E7;
+}
+
+.cabecalho {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 24px;
+    background-color: #1d102e;
+    box-shadow: 4px 5px 4px 0px rgba(0, 0, 0, 0.25);
+    height: 10vh;
+}
+
+.cabecalho-menu {
+    display: flex;
+    gap: 32px;
+}
+
+.cabecalho-menu-item {
+    color: #FFF2E7;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+header nav a {
+    color: white;
+    position: relative;
+}
+
+header nav a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2.5px;
+    bottom: -5px;
+    left: 0;
+    background-color: white;
+    border-radius: 6px;
+    transition: .3s;
+    transform-origin: center;
+    transform: scaleX(0);
+}
+
+header nav .active::before,
+header nav a:hover::before {
+    transform: scaleX(1);
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#advance-teams {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #530068;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#advance-teams:hover {
+    background-color: #200242;
+}
+
+#bracket {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.round {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.round h2 {
+    margin-bottom: 20px;
+    color: #FFF2E7;
+    background-color: #1d102e;
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.matchups {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.matchup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    padding: 15px;
+    border: 2px solid #ffffff;
+    background-color: #3e1f5f;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+    position: relative;
+}
+
+.matchup div {
+    padding: 5px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.matchup div:not(:last-child) {
+    border-bottom: 1px solid #ffffff;
+}
+
+.matchup::before, .matchup::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    background-color: #FFF2E7;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.matchup::before {
+    left: -20px;
+    border-left: 2px dashed #FFF2E7;
+}
+
+.matchup::after {
+    right: -20px;
+    border-right: 2px dashed #FFF2E7;
+}
+
+.champion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #1d102e;
+    padding: 10px;
+    border-radius: 4px;
+    height: 55px;
+}
+
+.champion #champion {
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+.champion h2 {
+    margin-bottom: 10px;
+    color: #FFF2E7;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.champion div {
+    padding: 10px 20px;
+    border: 2px solid #ffffff;
+    background-color: #3e1f5f;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+    position: relative;
+}

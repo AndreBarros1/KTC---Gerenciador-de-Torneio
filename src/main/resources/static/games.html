@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/games.css">
+    <link rel="icon" href="./assets/logo.png">
+    <title>Busca de Jogos</title>
+</head>
+<body>
+    <header class="cabecalho">
+        <nav class="cabecalho-menu">
+            <a class="cabecalho-menu-item" href="index.html">Home</a>
+            <a class="cabecalho-menu-item" href="criacao_torneio.html">Criar Torneio</a>
+        </nav>
+    </header>
+
+    <h1>Busca de Jogos</h1>
+    <section class="content">
+        <div class="container">
+            <form id="game-form">
+                <div class="input-box">
+                    <span class="details">Nome do Jogo:</span>
+                    <input type="text" id="game-name" placeholder="Digite o nome do jogo" required>
+                </div>
+                <div class="button">
+                    <button type="submit">Buscar Jogo</button>
+                </div>
+            </form>
+            <div id="game-results" class="results"></div>
+        </div>
+    </section>
+
+    <script src="./js/games.js"></script>
+</body>
+</html>
